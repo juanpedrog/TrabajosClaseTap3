@@ -31,7 +31,7 @@ public class PersonView extends Application{
   }
 
   @Override
-  public void start(Stage primaryStage){
+  public void start(Stage stage){
     //Populate the gender choice box
     genderFld.getItems().addAll("Male","Female","Unknow");
 
