@@ -23,7 +23,7 @@ public class DrawingLines extends Application{
     redLine.setStrokeLineCap(StrokeLineCap.BUTT);
     //Creating a dashed pattern
     redLine.getStrokeDashArray().addAll(10d,5d,15d,5d,20d);
-    redLine.getStrokeDashOffset(0);
+    redLine.setStrokeDashOffset(0);
     root.getChildren().add(redLine);
 
     //WHite line
@@ -44,5 +44,24 @@ public class DrawingLines extends Application{
     slider.setLayoutX(10);
     slider.setLayoutY(95);
     //bind the stroke dash offset property
+    redLine.strokeDashOffsetProperty().bind(slider.valueProperty());
+    root.getChildren().add(slider);
+    Text offsetText=new Text("Stroke Dash Offset: 0.0");
+    offsetText.setX(10);
+    offsetText.setY(80);
+    offsetText.setStroke(Color.WHITE);
+
+    //Display stroke dash offset values
+    slider.valueProperty().addListener((ov,curVal,newVal)->
+    offsetText.setText("Stroke Dash Offset: "+slider.getValue()));
+    root.getChildren().add(offsetText);
+
+    primaryStage.setScene(scene);
+    primaryStage.show();
+
+  }
+
+  public static void main(String[] args){
+    launch(args);
   }
 }
